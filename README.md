@@ -3,11 +3,15 @@
 This repository contains the code for the paper ["D'ARTAGNAN: Counterfactual Video Generation"](https://arxiv.org/abs/2206.01651)
 
 
-## Presentation - WIP
+## Presentation
 
-1) expert models + weights
-2) dartagnan + weights
-3) results
+Our model can generate counterfactual (ie. fake) videos, based on an input video and a property we want to inject in that input video to generate the counterfactual video. The method is very general and we apply it to healthcare by using the Echonet-Dynamic dataset, which contains ~10.000 echocardiograms (cardiac ultrasounds of the heart).
+
+To modify a property of the videos, we need a model to evaluate that property. We call it the expert model. In our use case, we want to change the ejection fraction of the hearts in the echocardiograms of our dataset. We thus train a regression model than can infer the ejection fraction from a video.
+
+Once that model is trained, we train the main model, that takes a video and a new ejection fraction as input and generates a counterfactual video with a heart showing an ejection fraction close to the input ejection fraction. This lets us answer the question *What would this echocardiogram look like if the patient had a different ejection fraction?*.
+
+![Echocardiograms](assets/echo.gif)
 
 ## Run the code
 
